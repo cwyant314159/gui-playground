@@ -1,0 +1,18 @@
+[submodule "deps/raylib"]
+	path = deps/raylib
+	url = https://github.com/raysan5/raylib.git
+[submodule "deps/raygui"]
+	path = deps/raygui
+	url = https://github.com/raysan5/raygui.git
+[submodule "deps/rlImGui"]
+	path = deps/rlImGui
+	url = https://github.com/raylib-extras/rlImGui.git
+[submodule "deps/imgui"]
+	path = deps/imgui
+	url = https://github.com/ocornut/imgui.git
+[submodule "deps/SDL"]
+	path = deps/SDL
+	url = https://github.com/libsdl-org/SDL.git
+[submodule "deps/stb"]
+	path = deps/stb
+	url = https://github.com/nothings/stb.git
