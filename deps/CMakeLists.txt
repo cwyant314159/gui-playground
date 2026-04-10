@@ -8,10 +8,7 @@ add_subdirectory(googletest EXCLUDE_FROM_ALL)
 # STB
 #
 add_library(stb INTERFACE)
-target_include_directories(stb
-    INTERFACE
-        stb
-)
+target_include_directories(stb INTERFACE stb)
 
 #
 # raylib
@@ -23,10 +20,8 @@ add_subdirectory(raylib EXCLUDE_FROM_ALL)
 # Generic raygui Interface Library
 #
 add_library(raygui-generic INTERFACE)
-target_include_directories(raygui-generic
-    INTERFACE
-        raygui/src/
-)
+target_include_directories(raygui-generic INTERFACE raygui/src)
+target_link_libraries(raygui-generic INTERFACE raylib)
 
 #
 # Dear ImGui
@@ -39,27 +34,14 @@ target_sources(imgui
         imgui/imgui_tables.cpp
         imgui/imgui_widgets.cpp
 )
-target_include_directories(imgui
-    PUBLIC
-        imgui
-)
+target_include_directories(imgui PUBLIC imgui)
 set_target_properties(imgui PROPERTIES EXCLUDE_FROM_ALL TRUE)
 
 #
 # raylib/Dear ImGui Integration Library
 #
 add_library(rlImGui STATIC)
-target_sources(rlImGui
-    PRIVATE
-        rlImGui/rlImGui.cpp
-)
-target_include_directories(rlImGui
-    PUBLIC
-        rlImGui
-)
-target_link_libraries(rlImGui
-    PUBLIC
-        raylib
-        imgui
-)
+target_sources(rlImGui PRIVATE rlImGui/rlImGui.cpp)
+target_include_directories(rlImGui PUBLIC rlImGui)
+target_link_libraries(rlImGui PUBLIC raylib imgui)
 set_target_properties(rlImGui PROPERTIES EXCLUDE_FROM_ALL TRUE)
