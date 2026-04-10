@@ -1,4 +1,10 @@
 #
+# googletest
+#
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+add_subdirectory(googletest EXCLUDE_FROM_ALL)
+
+#
 # STB
 #
 add_library(stb INTERFACE)
@@ -11,7 +17,7 @@ target_include_directories(stb
 # raylib
 #
 set(CUSTOMIZE_BUILD OFF)
-add_subdirectory(raylib)
+add_subdirectory(raylib EXCLUDE_FROM_ALL)
 
 #
 # Generic raygui Interface Library
@@ -25,7 +31,6 @@ target_include_directories(raygui-generic
 #
 # Dear ImGui
 #
-# Define the core ImGui library
 add_library(imgui STATIC)
 target_sources(imgui
     PUBLIC
@@ -38,6 +43,7 @@ target_include_directories(imgui
     PUBLIC
         imgui
 )
+set_target_properties(imgui PROPERTIES EXCLUDE_FROM_ALL TRUE)
 
 #
 # raylib/Dear ImGui Integration Library
@@ -56,9 +62,4 @@ target_link_libraries(rlImGui
         raylib
         imgui
 )
-
-#
-# SDL
-#
-# TODO add option to enable SDL from command line
-# add_subdirectory(SDL)
+set_target_properties(rlImGui PROPERTIES EXCLUDE_FROM_ALL TRUE)
